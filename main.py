@@ -8,9 +8,9 @@ def save_transaction(account_id,transaction):
 
 bank=accounts.Bank()
 
-account1 = bank.create_account("123456", "Alice", "savings")
-account2 = bank.create_account("789012", "Bob")
-account3 = bank.create_account("33752088","mohamed muhudin","savings")
+account1 = bank.create_account("123456",initial_blance=200, account_holder="Alice",account_type= "savings")
+account2 = bank.create_account("789012", initial_blance=200,account_holder="Bob")
+account3 = bank.create_account("33752088",initial_blance=200,account_holder="mohamed muhudin",account_type="savings")
 
 
 while True:
@@ -33,7 +33,7 @@ while True:
                 save_transaction(account_id, transaction)
             elif choice == 2:
                 amount = float(input("Enter the amount to withdraw: "))
-                transaction = account.withdraw(amount)
+                transaction = account.with_drawal(amount)
                 print(transaction)
                 save_transaction(account_id, transaction)
             elif choice == 3:

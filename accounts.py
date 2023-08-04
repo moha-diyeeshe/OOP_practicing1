@@ -19,9 +19,10 @@ class Accounts():
     def check_balance(self):
         return self.blance
 class Saving_account(Accounts):
-    def __init__(self,account_id,account_holder,blance=0,interest_rate=0.02):
+    def __init__(self,account_id,account_holder,blance=0,interest_rate=0.02,initial_blance=0):
         super().__init__(account_id,account_holder,blance)
         self.interest_rate=interest_rate
+        self.blance = initial_blance
 
     def calculate_interest(self):
         interest = self.interest_rate*self.blance
@@ -31,11 +32,11 @@ class Bank():
     def __init__(self):
         self.account= []
 
-    def create_account(self,account_id,account_holder,account_type='saving'):
+    def create_account(self,account_id,account_holder,account_type='saving',initial_blance=0):
         if account_type=='saving':
-            account=Saving_account(account_id,account_holder)
+            account=Saving_account(account_id,account_holder,initial_blance)
         else:
-            account =Accounts(account_id,account_holder)
+            account =Accounts(account_id,account_holder,initial_blance)
         self.account.append(account)
         return account
     def get_account(self,account_id):
